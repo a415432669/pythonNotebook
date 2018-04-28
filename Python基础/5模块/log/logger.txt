@@ -1,0 +1,4 @@
+2018-04-28 15:44:13,423 - <ipython-input-6-328de87dd820>[line:29] - INFO: this is a logger info message
+2018-04-28 15:44:13,426 - <ipython-input-6-328de87dd820>[line:30] - WARNING: this is a logger warning message
+2018-04-28 15:44:13,435 - <ipython-input-6-328de87dd820>[line:31] - ERROR: this is a logger error message
+2018-04-28 15:44:13,441 - <ipython-input-6-328de87dd820>[line:32] - CRITICAL: this is a logger critical message
