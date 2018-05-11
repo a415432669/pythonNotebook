@@ -1,3 +1,5 @@
-2018-04-28 15:43:55,940 - xx.py[line:12] - WARNING: this is loggging a warning message
-2018-04-28 15:43:55,941 - xx.py[line:13] - ERROR: this is an loggging error message
-2018-04-28 15:43:55,941 - xx.py[line:14] - CRITICAL: this is a loggging critical message
+2018-05-11 14:35:10,593 - log.py[line:9] - INFO: this is a loggging info message
+2018-05-11 14:35:10,594 - log.py[line:10] - DEBUG: this is a loggging debug message
+2018-05-11 14:35:10,594 - log.py[line:11] - WARNING: this is loggging a warning message
+2018-05-11 14:35:10,594 - log.py[line:12] - ERROR: this is an loggging error message
+2018-05-11 14:35:10,594 - log.py[line:13] - CRITICAL: this is a loggging critical message
