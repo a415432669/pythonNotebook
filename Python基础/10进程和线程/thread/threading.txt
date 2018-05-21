@@ -1,0 +1,9 @@
+﻿import time, threading
+
+def abc(): 
+    print('这个是由%s线程执行'%threading.current_thread().name)
+
+t = threading.Thread(target=abc,name='loopThread')
+t.start()
+t.join()
+print('所有内容运行完毕')

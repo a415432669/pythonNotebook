@@ -1,0 +1,47 @@
+﻿import requests
+import re
+from multiprocessing import Pool
+import os, time, random
+#用户想下载什么图片就下载什么图片，可以决定下多少张
+class dImg():
+    def __init__(self):
+        self.count = 0
+        pass
+    def run(self):
+        self.userSearch = input('请输入你想要下载的图片')
+        self.userNum = int(input('你想要下载多少页面图片'))
+        self.download()
+    def processRun(self):
+        self.userSearch = input('请输入你想要下载的图片')
+        self.userNum = int(input('你想要下载多少页面图片'))
+        self.multiDownPage()
+    def download(self):
+        for item in range(self.userNum):
+            self.downloadPage(item)
+    def downloadPage(self,item):
+        item = item + 1
+        res = requests.get('https://pixabay.com/zh/photos/?q={}&pagi={}'.format(self.userSearch,item))
+        pattern = re.compile('<div class="item".*?<img.*?src="(http.*?)".*?title="(.*?)">',re.S)
+        result = re.findall(pattern,res.text)
+        for item in result:
+            imgContent = requests.get(item[0])
+            ranNum = random.randint(0,100000000)
+            with open('./image/{}.jpg'.format(ranNum),'wb') as f:
+                f.write(imgContent.content)
+                print('已下载完：%s图'%ranNum)
+                self.count = self.count + 1
+    def multiDownPage(self):
+        p = Pool(self.userNum)
+        for i in range(self.userNum):
+            p.apply_async(self.downloadPage, args=(i,))
+        p.close()
+        p.join()
+        print('所有图片下载完毕')
+        
+        
+                
+if __name__ == '__main__':
+    a = dImg()
+    # a.run()
+    a.processRun()
+        

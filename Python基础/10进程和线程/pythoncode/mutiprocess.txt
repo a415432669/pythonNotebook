@@ -1,0 +1,15 @@
+﻿from multiprocessing import Process
+import os
+
+def otherProcess(name):
+    print('正在运行子进程：%s，进程的ID是：%s'%(name,os.getpid()))
+    
+if __name__ == '__main__':
+    print('主进程ID是：%s'%(os.getpid()))
+    p = Process(target=otherProcess,args=('test',))
+    print('子进程即将运行。。。')
+    p.start()
+    p.join()
+    print('这是子进程开始后面的代码')
+#     p.join()
+    print('子进程已经结束 ')

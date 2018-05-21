@@ -1,0 +1,71 @@
+import pygame,sys,traceback
+import myTank
+
+class TankGame():
+    def __init__(self):#初始化
+        pygame.init()#pygame初始化
+        pygame.mixer.init()#音频初始化
+
+        self.resolution = 630,630 #定义屏幕大小
+        self.screen = pygame.display.set_mode(self.resolution)
+        pygame.display.set_caption('TankWar') #设置窗口标题
+
+        #加载图片、音乐、音效
+        self.background_image = pygame.image.load('./image/background.png')
+        self.home_image = pygame.image.load('./image/home.png')
+        self.home_image_destoryed = pygame.image.load('./image/home_destroyed.png')
+
+        self.bang_sound = pygame.mixer.Sound('./music/bang.wav')
+        self.bang_sound.set_volume(1)
+
+        self.fire_sound = pygame.mixer.Sound('./music/Gunfire.wav')
+        self.start_sound = pygame.mixer.Sound('./music/start.wav')
+        self.start_sound.play()
+        self.clock = pygame.time.Clock()
+
+        # 游戏的进程，是否处于游戏中或者是游戏结束的状态
+        self.isGameover = False
+
+
+        #创建坦克：我方坦克、敌方坦克、敌方子弹
+        self.myTank1 = myTank.myTank(1)
+
+
+        #创建地图
+
+
+    def Gaming(self):
+        # 监听事件,操控我们坦克，发射子弹
+        self.myTank1.display()
+        self.screen.blit(self.myTank1.tankShow,(50,50))
+        pass
+
+    def GameOver(self):
+        #得分情况、重新游戏提示
+        pass
+
+    def display(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+            #self.screen.blit(self.background_image,(0,0))
+            if self.isGameover:
+                self.GameOver()
+            else:
+                self.Gaming()
+
+            pygame.display.flip()
+            self.clock.tick(60)
+        #最终呈现出的画面
+        pass
+
+
+if __name__ == '__main__':
+    tankWar = TankGame()
+    tankWar.display()
+
+
+
+
