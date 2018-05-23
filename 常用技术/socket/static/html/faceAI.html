@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<canvas id="casVideo" width="400" height="300"></canvas>
+		<canvas id="capImage" width="400" height="300" style="display: none;"></canvas>
+		
+		<script src="js/faceAI.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/soundAI.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var ai = new FaceAI()
+			var sai = new SoundAI()
+			
+			ai.drawVideoAtCanvas('casVideo')
+			
+//			setInterval(function(){
+//				ai.getPhoto('capImage')
+//				ai.getFaceInfo()
+//			},2000)
+n = 1
+setInterval(function(){
+	sai.getSound('陈子月不乖哟加'+n)
+	n = n+1
+},3000)
+			
+			
+		</script>
+	</body>
+</html>

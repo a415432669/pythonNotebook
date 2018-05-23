@@ -14,7 +14,15 @@ imageType = "BASE64"
 client = AipFace(APP_ID, API_KEY, SECRET_KEY)
 jpg1 = base64.b64encode(open('./3.jpg', 'rb').read())
 jpg1 = bytes.decode(jpg1)
-res =  client.detect(jpg1, imageType)
+res = client.faceverify([
+    {
+        'image': jpg1,
+        'image_type': 'BASE64',
+        'face_field':'age,beauty,expression,gender,glasses'
+    }
+    
+])
+print(res)
 # res =  json.loads(result)
 
 jpg1 =  cv2.imread('./3.jpg')
